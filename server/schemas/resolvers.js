@@ -15,6 +15,22 @@ const resolvers = {
             return await Trainer.findById(args._id)
         },
     },
+    Mutation: {
+        addPokemon: async (parent, args, context, info) => {
+            const pokemon = await Pokemon.create(args)
+            if (args.trainerId) {
+                await Trainer.findByIdAndUpdate(args.trainerId, {
+                    $addToSet: {
+                        pokemon: pokemon._id
+                    }
+                })
+            }
+            return pokemon
+        },
+        addTrainer: async (parent, args, context, info) => {
+            return await Trainer.create(args)
+        },
+    }
 }
 
 module.exports = resolvers

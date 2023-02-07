@@ -23,6 +23,25 @@ const typeDefs = `
         trainers: [Trainer]
         trainer(_id: ID!): Trainer
     }
+
+    type Mutation {
+        addPokemon(
+            trainerId: ID!
+            pokemonId: Int!
+            name: String!
+            height: Int
+            weight: Int
+            base_experience: Int
+            image: String
+            moves: [String]
+        ): Pokemon
+
+        addTrainer(
+            username: String!
+            email: String!
+            password: String!
+        ): Trainer
+    }
 `
 
 module.exports = typeDefs

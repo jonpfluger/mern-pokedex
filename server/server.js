@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 
 connection.once('open', async () => {
     await apolloServer.start()
-    app.use('graphql', expressMiddleware(apolloServer))
+    app.use('/graphql', expressMiddleware(apolloServer))
 
     app.listen(PORT, () => {
         console.log(`Express server listening on http://localhost:${PORT}`)

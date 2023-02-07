@@ -1,0 +1,33 @@
+{
+  "name": "mern-pokedex",
+  "version": "1.0.0",
+  "description": "A fullstack Mongo/Express/React/Node/GraphQL Pokédex.",
+  "main": "index.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server/server.js",
+    "start:dev": "concurrently \"cd server && npx nodemon server\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonpfluger/mern-pokedex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonpfluger/mern-pokedex/issues"
+  },
+  "homepage": "https://github.com/jonpfluger/mern-pokedex#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "dependencies": {
+    "if-env": "^1.0.4"
+  }
+}

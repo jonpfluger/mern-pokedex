@@ -3,6 +3,11 @@ import { ApolloClient, createHttpLink, InMemoryCache, ApolloProvider } from '@ap
 import { setContext } from '@apollo/client/link/context'
 import Auth from './utils/auth'
 
+import Search from './pages/search'
+import Trainer from './pages/trainer'
+import Login from './pages/login'
+import Screen from './components/screen'
+
 const httpLink = createHttpLink({
   uri: '/graphql'
 })
@@ -25,7 +30,16 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      
+      <BrowserRouter>
+        {/* header */}
+        <Screen>
+          <Routes>
+            <Route path="/" element={<Search />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/trainer/:id" element={<Trainer />} />
+          </Routes>
+        </Screen>
+      </BrowserRouter>
     </ApolloProvider>
   );
 }

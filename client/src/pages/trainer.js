@@ -3,9 +3,11 @@ import {GET_TRAINER} from '../utils/queries'
 import {useQuery} from '@apollo/client'
 import Spinner from '../components/spinner'
 import Auth from '../utils/auth'
+import {useThemeContext} from '../ctx/themeContext'
 
 const Trainer = () => {
     const { id } = useParams()
+    const { theme, setTheme } = useThemeContext()
 
     const { data, loading, error } = useQuery(GET_TRAINER, {
         variables: {
@@ -25,8 +27,8 @@ const Trainer = () => {
             <button onClick={() => Auth.logout()}>Log out</button>
             <h2>Theme Mode</h2>
             <select
-                // value={}
-                // onChange={}
+                value={theme}
+                onChange={e => setTheme(e.target.value)}
             >
                 {['light', 'dark'].map(mode => {
                     return <option key={mode} value={mode}>{mode}</option>

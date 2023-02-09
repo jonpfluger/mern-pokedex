@@ -7,7 +7,7 @@ const Search = () => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const [pokemon, setPokemon] = useState(null)
-    const [searchTerm, setSearchTerm] = useState('arcanine')
+    const [searchTerm, setSearchTerm] = useState('bulbasaur')
 
     useEffect(() => {
         getPokemon()

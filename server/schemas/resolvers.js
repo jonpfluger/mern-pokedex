@@ -14,7 +14,7 @@ const resolvers = {
             return await Trainer.find()
         },
         trainer: async (parent, args, context, info) => {
-            return await Trainer.findById(args._id)
+            return await Trainer.findById(args._id).populate('pokemon')
         },
     },
     Mutation: {
